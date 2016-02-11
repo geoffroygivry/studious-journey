@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 
-from django.http import HttpResponse
-from .models import ChoreList
+from django.http import HttpResponse, Http404
+from .models import ChoreList, Chore
 
 # Create your views here.
 def index(request):
@@ -10,12 +10,12 @@ def index(request):
   return render(request, 'vfxremote/index.html', {'chorelists' : lists})
 
 def details(request, chorelist_id):
-  list = ChoreList.objects.get(pk=chorelist_id)
+  list = get_object_or_404(ChoreList, pk=chorelist_id)
   return render(request, 'vfxremote/detail.html', {'chorelist' : list})
 
-def chores(request, chorelist_id):
-  return HttpResponse("This is the Chores of the list : #%s." % (chorelist_id))
 
 def choreDetails(request, chorelist_id, chore_id):
-  return HttpResponse("This is the Chore %s of the chore list : #%s." % (chore_id, chorelist_id))
+  list = get_object_or_404(ChoreList, pk=chorelist_id)
+  chore = get_object_or_404(Chore, pk=chore_id)
+  return render(request, 'vfxremote/choredetail.html', {'chorelist' : list, 'chore' : chore})
 
