@@ -1,13 +1,26 @@
+{% extends 'main.html' %}
+
+{% block primary %}
+
+
+
 <h1>New List</h1>
 
 <form action="/vfxremote/newlist/" method="post">
   {% csrf_token %}
-  <label for="name">List Name</label>
-  <input type="textbox" name='name' id='name' placeholder='Enter a name' />
+  <div class="form-group">
+    <label for="name">List Name</label>
+    <input type="textbox" class="form-control" name='name' id='name' placeholder='Enter a name' />
+  </div>
   <br/><br/>
-  <label for="duedate">Due date</label>
-  <input type="datetime-local" name="duedate" id='duedate' />
+  <div class="form-group">
+    <label for="duedate">Due date</label>
+    <input type="datetime-local" class="form-control" name="duedate" id='duedate' />
+  </div>
   <br/><br/>
-  <input type="submit" value="Create" />
+  <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
+
+
+{% endblock %}

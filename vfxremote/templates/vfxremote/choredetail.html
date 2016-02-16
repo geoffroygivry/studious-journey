@@ -1,3 +1,9 @@
+{% extends 'main.html' %}
+
+{% block primary %}
+
+
+
 <h1>{{chore}}</h1>
 
 <p>Due Date: {{chore.due_date}}</p>
@@ -16,3 +22,5 @@
   <br/>
   <input type="submit" value="Update" />
 </form>
+
+{% endblock %}
