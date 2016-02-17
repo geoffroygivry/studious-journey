@@ -123,6 +123,7 @@ STATIC_URL = '/static/'
 
 
 # Extra places for collectstatic to find static files.
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
